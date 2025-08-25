@@ -1,0 +1,6 @@
+COLUMN TABLE "sales_cus" 
+( sales_id integer,
+  pid varchar(5),
+  sales_date date,
+   sales_amount integer,
+    customer_id  integer )

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="zvaccination_cv" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="true" application="BAS" mdsCubeConversionExecution="AT_LOADING_TIME">
+<descriptions defaultDescription="zvaccination_cv"/>
+<localVariables>
+  <variable id="IP_Location" parameter="true">
+    <descriptions defaultDescription="Location"/>
+    <variableProperties datatype="NVARCHAR" length="40" mandatory="true" defaultExpressionLanguage="SQL" defaultValue="*">
+      <valueDomain type="AttributeValue">
+        <externalLikeStructureName>ZTABLE_VACCINATION</externalLikeStructureName>
+        <externalLikeElementName>location</externalLikeElementName>
+      </valueDomain>
+      <selection multiLine="false" type="SingleValue"/>
+    </variableProperties>
+  </variable>
+</localVariables>
+<variableMappings/>
+<dataSources>
+  <DataSource id="ZTABLE_VACCINATION">
+    <resourceUri>ZTABLE_VACCINATION</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews/>
+
+<logicalModel id="ZTABLE_VACCINATION" filterExpressionLanguage="SQL">
+  <attributes>
+    <attribute id="location" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="location"/>
+      <keyMapping columnObjectName="ZTABLE_VACCINATION" columnName="location"/>
+    </attribute>
+    <attribute id="iso_code" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="iso_code"/>
+      <keyMapping columnObjectName="ZTABLE_VACCINATION" columnName="iso_code"/>
+    </attribute>
+    <attribute id="date" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="date"/>
+      <keyMapping columnObjectName="ZTABLE_VACCINATION" columnName="date"/>
+    </attribute>
+    <attribute id="total_vaccinations" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="total_vaccinations"/>
+      <keyMapping columnObjectName="ZTABLE_VACCINATION" columnName="total_vaccinations"/>
+    </attribute>
+    <attribute id="people_vaccinated" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="people_vaccinated"/>
+      <keyMapping columnObjectName="ZTABLE_VACCINATION" columnName="people_vaccinated"/>
+    </attribute>
+    <attribute id="people_fully_vaccinated" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="people_fully_vaccinated"/>
+      <keyMapping columnObjectName="ZTABLE_VACCINATION" columnName="people_fully_vaccinated"/>
+    </attribute>
+    <attribute id="total_boosters" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="total_boosters"/>
+      <keyMapping columnObjectName="ZTABLE_VACCINATION" columnName="total_boosters"/>
+    </attribute>
+    <attribute id="daily_vaccinations_raw" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="daily_vaccinations_raw"/>
+      <keyMapping columnObjectName="ZTABLE_VACCINATION" columnName="daily_vaccinations_raw"/>
+    </attribute>
+    <attribute id="daily_vaccinations" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="daily_vaccinations"/>
+      <keyMapping columnObjectName="ZTABLE_VACCINATION" columnName="daily_vaccinations"/>
+    </attribute>
+    <attribute id="total_vaccinations_per_hundred" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="total_vaccinations_per_hundred"/>
+      <keyMapping columnObjectName="ZTABLE_VACCINATION" columnName="total_vaccinations_per_hundred"/>
+    </attribute>
+    <attribute id="people_vaccinated_per_hundred" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="people_vaccinated_per_hundred"/>
+      <keyMapping columnObjectName="ZTABLE_VACCINATION" columnName="people_vaccinated_per_hundred"/>
+    </attribute>
+    <attribute id="people_fully_vaccinated_per_hundred" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="people_fully_vaccinated_per_hundred"/>
+      <keyMapping columnObjectName="ZTABLE_VACCINATION" columnName="people_fully_vaccinated_per_hundred"/>
+    </attribute>
+    <attribute id="total_boosters_per_hundred" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="total_boosters_per_hundred"/>
+      <keyMapping columnObjectName="ZTABLE_VACCINATION" columnName="total_boosters_per_hundred"/>
+    </attribute>
+    <attribute id="daily_vaccinations_per_million" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="daily_vaccinations_per_million"/>
+      <keyMapping columnObjectName="ZTABLE_VACCINATION" columnName="daily_vaccinations_per_million"/>
+    </attribute>
+    <attribute id="daily_people_vaccinated" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="daily_people_vaccinated"/>
+      <keyMapping columnObjectName="ZTABLE_VACCINATION" columnName="daily_people_vaccinated"/>
+    </attribute>
+    <attribute id="daily_people_vaccinated_per_hundred" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="daily_people_vaccinated_per_hundred"/>
+      <keyMapping columnObjectName="ZTABLE_VACCINATION" columnName="daily_people_vaccinated_per_hundred"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+
+
+  <filter>&quot;location&quot; IN ('$$IP_Location$$') OR '*' IN ('$$IP_Location$$')</filter>
+
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+    
+  </shapes>
+</layout>
+</Calculation:scenario>

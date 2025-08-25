@@ -1,0 +1,4 @@
+COLUMN TABLE DEPARTMENTS (
+    DepartmentID INT PRIMARY KEY,
+    DepartmentName VARCHAR(100)
+);

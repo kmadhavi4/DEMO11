@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="EMPLOYEPERFORMAVCE" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="true" application="BAS" mdsCubeConversionExecution="AT_LOADING_TIME">
+<descriptions defaultDescription="EMPLOYEPERFORMAVCE"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="EMPLOYEES">
+    <resourceUri>EMPLOYEES</resourceUri>
+  </DataSource>
+  <DataSource id="DEPARTMENTS">
+    <resourceUri>DEPARTMENTS</resourceUri>
+  </DataSource>
+  <DataSource id="TRAINING">
+    <resourceUri>TRAINING</resourceUri>
+  </DataSource>
+  <DataSource id="EMPLOYEE_PROJECTS">
+    <resourceUri>EMPLOYEE_PROJECTS</resourceUri>
+  </DataSource>
+  <DataSource id="PROJECTS">
+    <resourceUri>PROJECTS</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="EMPLOYEEID"/>
+      <viewAttribute id="NAME"/>
+      <viewAttribute id="DEPARTMENTID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="EMPLOYEES"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+    <viewAttributes>
+      <viewAttribute id="DEPARTMENTID"/>
+      <viewAttribute id="DEPARTMENTNAME"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="DEPARTMENTS"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_4">
+    <viewAttributes>
+      <viewAttribute id="TRAININGID"/>
+      <viewAttribute id="EMPLOYEEID"/>
+      <viewAttribute id="TRAININGNAME"/>
+      <viewAttribute id="COMPLETIONDATE"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="TRAINING"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_5">
+    <viewAttributes>
+      <viewAttribute id="EMPLOYEEPROJECTID"/>
+      <viewAttribute id="EMPLOYEEID"/>
+      <viewAttribute id="PROJECTID"/>
+      <viewAttribute id="ROLE"/>
+      <viewAttribute id="HOURSWORKED"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="EMPLOYEE_PROJECTS"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1_1" cardinality="CN_N" joinType="inner" multiJoinNode="Join_1" multiJoinCentralTable="Projection_2" multiJoinOrder="Outside In">
+    <viewAttributes>
+      <viewAttribute id="TRAININGID" aggregationType="sum"/>
+      <viewAttribute id="TRAININGNAME"/>
+      <viewAttribute id="COMPLETIONDATE"/>
+      <viewAttribute id="EMPLOYEEID" aggregationType="sum"/>
+      <viewAttribute id="EMPLOYEEPROJECTID" aggregationType="sum"/>
+      <viewAttribute id="PROJECTID" aggregationType="sum"/>
+      <viewAttribute id="ROLE"/>
+      <viewAttribute id="HOURSWORKED" aggregationType="sum"/>
+      <viewAttribute hidden="true" id="JOIN$EMPLOYEEID$EMPLOYEEID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Projection_4">
+      <mapping xsi:type="Calculation:AttributeMapping" target="TRAININGID" source="TRAININGID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TRAININGNAME" source="TRAININGNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPLETIONDATE" source="COMPLETIONDATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEEID" source="EMPLOYEEID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$EMPLOYEEID$EMPLOYEEID" source="EMPLOYEEID"/>
+    </input>
+    <input node="Projection_5">
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEEPROJECTID" source="EMPLOYEEPROJECTID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROJECTID" source="PROJECTID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ROLE" source="ROLE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HOURSWORKED" source="HOURSWORKED"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$EMPLOYEEID$EMPLOYEEID" source="EMPLOYEEID"/>
+    </input>
+    <joinAttribute name="JOIN$EMPLOYEEID$EMPLOYEEID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1_2" cardinality="CN_N" joinType="inner" multiJoinNode="Join_1" multiJoinCentralTable="Projection_2" multiJoinOrder="Outside In">
+    <viewAttributes>
+      <viewAttribute id="TRAININGID" aggregationType="sum"/>
+      <viewAttribute id="TRAININGNAME"/>
+      <viewAttribute id="COMPLETIONDATE"/>
+      <viewAttribute id="EMPLOYEEID" aggregationType="sum"/>
+      <viewAttribute id="NAME"/>
+      <viewAttribute id="EMPLOYEEPROJECTID" aggregationType="sum"/>
+      <viewAttribute id="PROJECTID" aggregationType="sum"/>
+      <viewAttribute id="ROLE"/>
+      <viewAttribute id="HOURSWORKED" aggregationType="sum"/>
+      <viewAttribute id="DEPARTMENTID"/>
+      <viewAttribute hidden="true" id="JOIN$EMPLOYEEID$EMPLOYEEID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Projection_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME" source="NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENTID" source="DEPARTMENTID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$EMPLOYEEID$EMPLOYEEID" source="EMPLOYEEID"/>
+    </input>
+    <input node="Join_1_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="TRAININGID" source="TRAININGID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TRAININGNAME" source="TRAININGNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPLETIONDATE" source="COMPLETIONDATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEEID" source="EMPLOYEEID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEEPROJECTID" source="EMPLOYEEPROJECTID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROJECTID" source="PROJECTID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ROLE" source="ROLE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HOURSWORKED" source="HOURSWORKED"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$EMPLOYEEID$EMPLOYEEID" source="EMPLOYEEID"/>
+    </input>
+    <joinAttribute name="JOIN$EMPLOYEEID$EMPLOYEEID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1_3" cardinality="CN_N" joinType="inner" multiJoinNode="Join_1" multiJoinCentralTable="Projection_2" multiJoinOrder="Outside In">
+    <viewAttributes>
+      <viewAttribute id="TRAININGID" aggregationType="sum"/>
+      <viewAttribute id="TRAININGNAME"/>
+      <viewAttribute id="COMPLETIONDATE"/>
+      <viewAttribute id="EMPLOYEEID" aggregationType="sum"/>
+      <viewAttribute id="DEPARTMENTID" aggregationType="sum"/>
+      <viewAttribute id="DEPARTMENTNAME"/>
+      <viewAttribute id="NAME"/>
+      <viewAttribute id="EMPLOYEEPROJECTID" aggregationType="sum"/>
+      <viewAttribute id="PROJECTID" aggregationType="sum"/>
+      <viewAttribute id="ROLE"/>
+      <viewAttribute id="HOURSWORKED" aggregationType="sum"/>
+      <viewAttribute hidden="true" id="JOIN$DEPARTMENTID$DEPARTMENTID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Projection_2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENTID" source="DEPARTMENTID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENTNAME" source="DEPARTMENTNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$DEPARTMENTID$DEPARTMENTID" source="DEPARTMENTID"/>
+    </input>
+    <input node="Join_1_2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="TRAININGID" source="TRAININGID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TRAININGNAME" source="TRAININGNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPLETIONDATE" source="COMPLETIONDATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEEID" source="EMPLOYEEID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME" source="NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEEPROJECTID" source="EMPLOYEEPROJECTID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROJECTID" source="PROJECTID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ROLE" source="ROLE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HOURSWORKED" source="HOURSWORKED"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$DEPARTMENTID$DEPARTMENTID" source="DEPARTMENTID"/>
+    </input>
+    <joinAttribute name="JOIN$DEPARTMENTID$DEPARTMENTID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_2" cardinality="CN_N" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="TRAININGID" aggregationType="sum"/>
+      <viewAttribute id="TRAININGNAME"/>
+      <viewAttribute id="COMPLETIONDATE"/>
+      <viewAttribute id="EMPLOYEEID" aggregationType="sum"/>
+      <viewAttribute id="DEPARTMENTID" aggregationType="sum"/>
+      <viewAttribute id="DEPARTMENTNAME"/>
+      <viewAttribute id="NAME"/>
+      <viewAttribute id="EMPLOYEEPROJECTID" aggregationType="sum"/>
+      <viewAttribute id="PROJECTID" aggregationType="sum"/>
+      <viewAttribute id="ROLE"/>
+      <viewAttribute id="HOURSWORKED" aggregationType="sum"/>
+      <viewAttribute hidden="true" id="JOIN$PROJECTID$PROJECTID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_1_3">
+      <mapping xsi:type="Calculation:AttributeMapping" target="TRAININGID" source="TRAININGID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TRAININGNAME" source="TRAININGNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPLETIONDATE" source="COMPLETIONDATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEEID" source="EMPLOYEEID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENTID" source="DEPARTMENTID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENTNAME" source="DEPARTMENTNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME" source="NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEEPROJECTID" source="EMPLOYEEPROJECTID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROJECTID" source="PROJECTID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ROLE" source="ROLE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HOURSWORKED" source="HOURSWORKED"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$PROJECTID$PROJECTID" source="PROJECTID"/>
+    </input>
+    <input node="PROJECTS">
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$PROJECTID$PROJECTID" source="PROJECTID"/>
+    </input>
+    <joinAttribute name="JOIN$PROJECTID$PROJECTID"/>
+  </calculationView>
+</calculationViews>
+
+<logicalModel id="Join_2">
+  <attributes/>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="541.1894489495048" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+    
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="302.0000000000002" y="566.9999976158142"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="512.0000000000001" y="566.9999976158142"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_4" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="722.0000000000001" y="566.9999976158142"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="482.13365599224335" y="376.9999988079071"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Projection_4" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="920" y="30"/>
+      <rectangleSize width="187"/>
+    </shape>
+  
+    <shape modelObjectName="Projection_2" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="192"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="246" y="30"/>
+      <rectangleSize width="171.765625"/>
+    </shape>
+    <shape modelObjectName="Projection_5" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="546" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_5" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92.00000000000011" y="566.9999976158142"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="482.13365599224335" y="236.9999988079071"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Join_1_3" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="PROJECTS" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="169.11767578125"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

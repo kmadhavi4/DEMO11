@@ -1,0 +1,8 @@
+PROCEDURE "undeploy"( IN t NVARCHAR(1000))
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY DEFINER AS 
+BEGIN
+
+execute immediate 'drop table "'|| :t||'"';
+
+END;

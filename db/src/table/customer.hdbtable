@@ -1,0 +1,6 @@
+COLUMN TABLE "customer" (
+    customer_id INTEGER,
+    customer_name VARCHAR(40),
+    customer_country VARCHAR(3),
+    customer_region VARCHAR(4)
+)

@@ -1,0 +1,7 @@
+COLUMN TABLE EMPLOYEE_PROJECTS (
+    EmployeeProjectID INT PRIMARY KEY,
+    EmployeeID INT,
+    ProjectID INT,
+    Role VARCHAR(50),
+    HoursWorked INT
+);

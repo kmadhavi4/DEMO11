@@ -1,0 +1,6 @@
+COLUMN TABLE TRAINING (
+    TrainingID INT PRIMARY KEY,
+    EmployeeID INT,
+    TrainingName VARCHAR(100),
+    CompletionDate DATE
+);

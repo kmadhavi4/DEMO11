@@ -1,0 +1,6 @@
+COLUMN TABLE PROJECTS (
+    ProjectID INT PRIMARY KEY,
+    ProjectName VARCHAR(100),
+    StartDate DATE,
+    EndDate DATE
+);
