@@ -1,4 +1,4 @@
-#department table structure#
+#department table structure test11#
 COLUMN TABLE DEPARTMENTS (
     DepartmentID INT PRIMARY KEY,
     DepartmentName VARCHAR(100)
