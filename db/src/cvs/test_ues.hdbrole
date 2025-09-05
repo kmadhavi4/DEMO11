@@ -1,0 +1,14 @@
+{
+  "role": {
+    "name": "test_USER#",
+    "object_privileges": [
+      {
+        "name": "zvaccination_cv",
+        "type": "VIEW",
+        "privileges": [
+          "SELECT"
+        ]
+      }
+    ]
+  }
+}

@@ -4,7 +4,7 @@
 <localVariables>
   <variable id="IP_Location" parameter="true">
     <descriptions defaultDescription="Location"/>
-    <variableProperties datatype="NVARCHAR" length="40" mandatory="true" defaultExpressionLanguage="SQL" defaultValue="*">
+    <variableProperties datatype="NVARCHAR" length="40" mandatory="true" defaultValue="*">
       <valueDomain type="AttributeValue">
         <externalLikeStructureName>ZTABLE_VACCINATION</externalLikeStructureName>
         <externalLikeElementName>location</externalLikeElementName>

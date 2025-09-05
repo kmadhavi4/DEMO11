@@ -1,0 +1,14 @@
+{
+  "role": {
+    "name": "PublicAccessSchema",
+    "object_privileges": [
+      {
+        "name": "ZTABLE_VACCINATION",
+        "type": "TABLE",
+        "privileges": [
+          "SELECT"
+        ]
+      }
+    ]
+  }
+}

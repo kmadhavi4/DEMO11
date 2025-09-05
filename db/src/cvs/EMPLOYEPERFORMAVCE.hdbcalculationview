@@ -195,9 +195,34 @@
 </calculationViews>
 
 <logicalModel id="Join_2">
-  <attributes/>
+  <attributes>
+    <attribute id="COMPLETIONDATE" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COMPLETIONDATE"/>
+      <keyMapping columnObjectName="Join_2" columnName="COMPLETIONDATE"/>
+    </attribute>
+    <attribute id="ROLE" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ROLE"/>
+      <keyMapping columnObjectName="Join_2" columnName="ROLE"/>
+    </attribute>
+  </attributes>
   <calculatedAttributes/>
-  <baseMeasures/>
+  <baseMeasures>
+    <measure id="TRAININGID" order="1" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="TRAININGID"/>
+      <measureMapping columnObjectName="Join_2" columnName="TRAININGID"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+    <measure id="DEPARTMENTID" order="3" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="DEPARTMENTID"/>
+      <measureMapping columnObjectName="Join_2" columnName="DEPARTMENTID"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+    <measure id="EMPLOYEEID" order="4" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="EMPLOYEEID"/>
+      <measureMapping columnObjectName="Join_2" columnName="EMPLOYEEID"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+  </baseMeasures>
   <calculatedMeasures/>
   <restrictedMeasures/>
   <localDimensions/>
@@ -234,7 +259,7 @@
     <shape modelObjectName="Join_1_3" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="20" y="30"/>
       <rectangleSize width="250"/>
-    </shape><shape><upperLeftCorner/><rectangleSize/></shape>
+    </shape><shape><upperLeftCorner/><rectangleSize/></shape><shape><upperLeftCorner/><rectangleSize/></shape>
     <shape modelObjectName="PROJECTS" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="320" y="30"/>
       <rectangleSize width="169"/>
