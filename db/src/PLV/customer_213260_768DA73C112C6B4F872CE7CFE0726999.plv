@@ -1,0 +1,829 @@
+<?Version 36?>
+<Plan ID="ID_213260_768DA73C112C6B4F872CE7CFE0726999_0" xmlns="http://www.sap.com/ndb/planviz" Type="Executed" PlanType="QoExec">
+<SQL><![CDATA[SELECT TOP 1000
+	"CUSTOMER_ID",
+	"CUSTOMER_NAME",
+	"CUSTOMER_COUNTRY",
+	"CUSTOMER_REGION",
+	"SALES_ID",
+	"PID",
+	"SALES_DATE",
+	SUM("SALES_AMOUNT") AS "SALES_AMOUNT"
+FROM "HANA_DEV_HDI_DB_1"."CUSTOMERWISESALE"
+GROUP BY "CUSTOMER_ID", "CUSTOMER_NAME", "CUSTOMER_COUNTRY", "CUSTOMER_REGION", "SALES_ID", "PID", "SALES_DATE"]]></SQL>
+<SystemVersion><![CDATA[{"Version":"4.00.000.00.1755603748","CompileType":"rel","USER_NAME":"Capturing USER_NAME is disabled","SCHEMA_NAME":"HANA_DEV_HDI_DB_1"}]]></SystemVersion>
+<RecompileState><![CDATA[INITIAL_STATE]]></RecompileState>
+<SessionVariables><![CDATA[{"ABAPVARCHARMODE":"FALSE","APPLICATION":"SAP_HANARuntimeTools_HRA","APPLICATIONUSER":"Capturing APPLICATIONUSER is disabled","APPLICATIONVERSION":"4.0.250814-1756821558-90bbf63","DRIVERVERSION":"2.25.29","OS_USER":"Capturing OS_USER is disabled","PROTOCOL_VERSION":"4.1 (6, 10)","SPATIAL_OUTPUT_REPRESENTATION":"EWKB","VIRTUAL_TABLE_REPLICA":"TRUE"}]]></SessionVariables>
+<ProjectedColsWithDatatype><![CDATA[CUSTOMER_ID(INT), CUSTOMER_NAME(NVARCHAR(40)), CUSTOMER_COUNTRY(NVARCHAR(3)), CUSTOMER_REGION(NVARCHAR(4)), SALES_ID(INT), PID(NVARCHAR(5)), SALES_DATE(DATE), SALES_AMOUNT(INT)]]></ProjectedColsWithDatatype>
+<CompileTime>
+	<Start Unit="us">1758173111066512</Start>
+	<End Unit="us">1758173111066549</End>
+</CompileTime>
+<StmtStats><![CDATA[]]></StmtStats>
+<StmtMemStats><![CDATA[[{"Allocated Count":3705,"Allocated Size":6172148,"Allocator Name":"Connection/213260/Statement/915944726065833","Count in Use":3702,"Deallocated Count":2185,"Deallocated Size":3739272,"Depth":3,"Max Allocation Size (estimate)":2433556,"Max Single Allocation Size":1048576,"Size in Use":2432604},{"Allocated Count":4,"Allocated Size":2496,"Allocator Name":"Connection/213260/Statement/915944726065833/Pool/RowEngine/QueryExecution/SearchAlloc","Count in Use":4,"Deallocated Count":0,"Deallocated Size":0,"Depth":4,"Max Allocation Size (estimate)":2496,"Max Single Allocation Size":1048,"Size in Use":2496},{"Allocated Count":3728,"Allocated Size":6172892,"Allocator Name":"Connection/213260/Statement/915944726065833/IMPLICIT","Count in Use":3725,"Deallocated Count":2186,"Deallocated Size":3739312,"Depth":4,"Max Allocation Size (estimate)":2434260,"Max Single Allocation Size":1048576,"Size in Use":2433308}]]]></StmtMemStats>
+<CompileSummary><![CDATA[{}]]></CompileSummary>
+	<RootRelation ID="ID_213260_768DA73C112C6B4F872CE7CFE0726999_0" TypeName="PROJECT" Status="Finished">
+		<Name>HEX Search</Name>
+		<ExecutionTime>
+			<Exclusive Unit="us">0</Exclusive>
+			<Inclusive Unit="us">9546</Inclusive>
+		</ExecutionTime>
+		<MemoryUsage>
+			<Max>0</Max>
+		</MemoryUsage>
+		<Child ID="ID_213260_768DA73C112C6B4F872CE7CFE0726999_1" >
+			<ExecutedOutputCardinality>4</ExecutedOutputCardinality>
+			<FetchCallCount>1</FetchCallCount>
+		</Child>
+	</RootRelation>
+	<Relation ID="ID_213260_768DA73C112C6B4F872CE7CFE0726999_1" TypeName="HEX_SEARCH" InternalBufferId="0" Status="Finished">
+		<Name>HEX Search</Name>
+		<ExecutionType>HEX</ExecutionType>
+		<Summary><![CDATA[customer.CUSTOMER_ID, customer.CUSTOMER_NAME, customer.CUSTOMER_COUNTRY, customer.CUSTOMER_REGION, sales_cus.SALES_ID, sales_cus.PID, sales_cus.SALES_DATE, SALES_AMOUNT]]></Summary>
+		<Location>f06e234a-b866-49ab-9620-360d3aead86a:30040</Location>
+		<EstimatedCost>
+			<Inclusive Unit="us">7.53604</Inclusive>
+		</EstimatedCost>
+		<EstimatedOutputCardinality>3.8</EstimatedOutputCardinality>
+		<ExecutionTime>
+			<Start Unit="us">1758173111069539</Start>
+			<End Unit="us">1758173111079085</End>
+			<Exclusive Unit="us">9462</Exclusive>
+			<Inclusive Unit="us">9546</Inclusive>
+			<Timestamps>[{"Open": [{"start":1758173111069539,"end":1758173111069563,"thread":9305},{"start":1758173111069572,"end":1758173111070286,"thread":9305}]},{"Fetch": [{"start":1758173111070330,"end":1758173111079042,"thread":9305}]},{"Close": [{"start":1758173111079073,"end":1758173111079085,"thread":9305}]}]</Timestamps>
+		</ExecutionTime>
+		<MemoryUsage>
+			<Max>0</Max>
+		</MemoryUsage>
+		<KernelCPUTime Unit="ms">0.000</KernelCPUTime>
+		<UserCPUTime Unit="ms">7.815</UserCPUTime>
+		<Details><![CDATA[{"Projected Cols":"customer.CUSTOMER_ID, customer.CUSTOMER_NAME, customer.CUSTOMER_COUNTRY, customer.CUSTOMER_REGION, sales_cus.SALES_ID, sales_cus.PID, sales_cus.SALES_DATE, SALES_AMOUNT","Non-compiled CPU overhead":"9.499 ms"}]]></Details>
+		<InnerPlans>
+			<Plan ID="ID_213260_768DA73C112C6B4F872CE7CFE0726999_1_1" Type="Estimated" PlanType="Logical">
+				<RootRelation ID="ID_213260_768DA73C112C6B4F872CE7CFE0726999_1_1" TypeName="PROJECT">
+					<Name>PROJECT</Name>
+					<Summary><![CDATA[customer.CUSTOMER_ID, customer.CUSTOMER_NAME, customer.CUSTOMER_COUNTRY, customer.CUSTOMER_REGION, sales_cus.SALES_ID, sales_cus.PID, sales_cus.SALES_DATE, SALES_AMOUNT]]></Summary>
+					<Property><![CDATA[PHYSICAL_ENUM_BY: HEX_PROJECT]]></Property>
+					<Location>f06e234a-b866-49ab-9620-360d3aead86a:30040</Location>
+					<EstimatedCost>
+						<Exclusive Unit="us">-1000000</Exclusive>
+						<Inclusive Unit="us">7.53604</Inclusive>
+					</EstimatedCost>
+					<EstimatedOutputCardinality>3.8</EstimatedOutputCardinality>
+					<Details><![CDATA[{"Projected Cols":"customer.CUSTOMER_ID, customer.CUSTOMER_NAME, customer.CUSTOMER_COUNTRY, customer.CUSTOMER_REGION, sales_cus.SALES_ID, sales_cus.PID, sales_cus.SALES_DATE, SALES_AMOUNT"}]]></Details>
+					<Child ID="ID_213260_768DA73C112C6B4F872CE7CFE0726999_1_2">
+					</Child>
+				</RootRelation>
+				<Relation ID="ID_213260_768DA73C112C6B4F872CE7CFE0726999_1_2" TypeName="TOP">
+					<Name>LIMIT</Name>
+					<Summary><![CDATA[NUM RECORDS: 1000]]></Summary>
+					<Property><![CDATA[PHYSICAL_ENUM_BY: HEX_LIMIT]]></Property>
+					<Location>f06e234a-b866-49ab-9620-360d3aead86a:30040</Location>
+					<EstimatedCost>
+						<Exclusive Unit="us">-1000000</Exclusive>
+						<Inclusive Unit="us">7.53604</Inclusive>
+					</EstimatedCost>
+					<EstimatedOutputCardinality>3.8</EstimatedOutputCardinality>
+					<Details><![CDATA[{"Num Records":"1000"}]]></Details>
+					<Child ID="ID_213260_768DA73C112C6B4F872CE7CFE0726999_1_3">
+					</Child>
+				</Relation>
+				<Relation ID="ID_213260_768DA73C112C6B4F872CE7CFE0726999_1_3" TypeName="GROUP_BY">
+					<Name>AGGREGATION</Name>
+					<Summary><![CDATA[GROUPING: customer.CUSTOMER_ID, customer.CUSTOMER_NAME, customer.CUSTOMER_COUNTRY, customer.CUSTOMER_REGION, sales_cus.SALES_ID, sales_cus.PID, sales_cus.SALES_DATE, AGGREGATION: SUM(sales_cus.SALES_AMOUNT)]]></Summary>
+					<Property><![CDATA[VALUE_ID GROUPING, PHYSICAL_ENUM_BY: HEX_AGGR]]></Property>
+					<Location>f06e234a-b866-49ab-9620-360d3aead86a:30040</Location>
+					<EstimatedCost>
+						<Exclusive Unit="us">-1000000</Exclusive>
+						<Inclusive Unit="us">7.53604</Inclusive>
+					</EstimatedCost>
+					<EstimatedOutputCardinality>3.8</EstimatedOutputCardinality>
+					<Details><![CDATA[{"Grouping Cols":"customer.CUSTOMER_ID, customer.CUSTOMER_NAME, customer.CUSTOMER_COUNTRY, customer.CUSTOMER_REGION, sales_cus.SALES_ID, sales_cus.PID, sales_cus.SALES_DATE, ","Aggregation Cols":"SUM(sales_cus.SALES_AMOUNT)"}]]></Details>
+					<Child ID="ID_213260_768DA73C112C6B4F872CE7CFE0726999_1_4">
+					</Child>
+				</Relation>
+				<Relation ID="ID_213260_768DA73C112C6B4F872CE7CFE0726999_1_4" TypeName="JOIN">
+					<Name>HASH JOIN</Name>
+					<Summary><![CDATA[HASH CONDITION: customer.CUSTOMER_ID = sales_cus.CUSTOMER_ID, HASH SIZE: 4]]></Summary>
+					<Property><![CDATA[PERFECT_HASH, PHYSICAL_ENUM_BY: HEX_HASH_JOIN]]></Property>
+					<Location>f06e234a-b866-49ab-9620-360d3aead86a:30040</Location>
+					<EstimatedCost>
+						<Exclusive Unit="us">-1000000</Exclusive>
+						<Inclusive Unit="us">1.59084</Inclusive>
+					</EstimatedCost>
+					<EstimatedOutputCardinality>4</EstimatedOutputCardinality>
+					<Details><![CDATA[{"Hash Condition":"customer.CUSTOMER_ID = sales_cus.CUSTOMER_ID, HASH SIZE: 4"}]]></Details>
+					<Child ID="ID_213260_768DA73C112C6B4F872CE7CFE0726999_1_5">
+					</Child>
+					<Child ID="ID_213260_768DA73C112C6B4F872CE7CFE0726999_1_6">
+					</Child>
+				</Relation>
+				<Relation ID="ID_213260_768DA73C112C6B4F872CE7CFE0726999_1_6" TypeName="TABLE">
+					<Name>TABLE SCAN</Name>
+					<Schema><![CDATA[HANA_DEV_HDI_DB_1]]></Schema>
+					<TableType><![CDATA[COLUMN TABLE]]></TableType>
+					<ObjectName><![CDATA[sales_cus]]></ObjectName>
+					<Property><![CDATA[PHYSICAL_ENUM_BY: HEX_TABLE_SCAN]]></Property>
+					<Location>f06e234a-b866-49ab-9620-360d3aead86a:30040</Location>
+					<EstimatedCost>
+						<Exclusive Unit="us">-1000000</Exclusive>
+						<Inclusive Unit="us">0.015</Inclusive>
+					</EstimatedCost>
+					<EstimatedOutputCardinality>5</EstimatedOutputCardinality>
+				</Relation>
+				<Relation ID="ID_213260_768DA73C112C6B4F872CE7CFE0726999_1_5" TypeName="TABLE">
+					<Name>TABLE SCAN</Name>
+					<Schema><![CDATA[HANA_DEV_HDI_DB_1]]></Schema>
+					<TableType><![CDATA[COLUMN TABLE]]></TableType>
+					<ObjectName><![CDATA[customer]]></ObjectName>
+					<Property><![CDATA[PHYSICAL_ENUM_BY: HEX_TABLE_SCAN]]></Property>
+					<Location>f06e234a-b866-49ab-9620-360d3aead86a:30040</Location>
+					<EstimatedCost>
+						<Exclusive Unit="us">-1000000</Exclusive>
+						<Inclusive Unit="us">0.012</Inclusive>
+					</EstimatedCost>
+					<EstimatedOutputCardinality>4</EstimatedOutputCardinality>
+				</Relation>
+			</Plan>
+			<Plan ID="58_group19" Type="Executed" PlanType="Column">
+				<RootRelation ID="58_group19_node" Status="Finished" Physical="True" TypeName="HEX">
+					<Name><![CDATA[PROJECT]]></Name>
+					<Summary><![CDATA[customer.CUSTOMER_ID, customer.CUSTOMER_NAME, customer.CUSTOMER_COUNTRY, customer.CUSTOMER_REGION, sales_cus.SALES_ID, sales_cus.PID, sales_cus.SALES_DATE, SALES_AMOUNT]]></Summary>
+					<ExecutionTime>
+						<Timestamps>[{"Pop":[{"start":1758173111070279,"end":1758173111079038}]}]</Timestamps>
+					</ExecutionTime>
+					<UserCPUTime Unit="ms">0.016</UserCPUTime>
+					<Details><![CDATA[{"max numUsedLocalContexts":"1","Estimated Output Cardinality":"4","Memory Allocated":"0.000 MiB","Output Spec":"CUSTOMER_ID INT, CUSTOMER_NAME NVARCHAR(40), CUSTOMER_COUNTRY NVARCHAR(3), CUSTOMER_REGION NVARCHAR(4), SALES_ID INT, PID NVARCHAR(5), SALES_DATE DATE, SALES_AMOUNT INT"}]]></Details>
+					<InnerPlans>
+						<Plan ID="59_op32" Type="Executed" PlanType="Column">
+							<RootRelation ID="59_op32_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[ProjectFetchOp]]></Name>
+								<Summary><![CDATA[Fetch buffered result rows]]></Summary>
+								<Location><![CDATA[f06e234a-b866-49ab-9620-360d3aead86a:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1758173111079035,"end":1758173111079038}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.003</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 15":"numUsedLocalContexts 1, CPUTime 0.003 ms, CPUWaitTime 0.000 ms, calls 1","operatorId":"53"}]]></Details>
+								<Child ID="60_op30_node">
+									<Details><![CDATA[{"ConnectionType":"Logical"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="60_op30" Type="Executed" PlanType="Column">
+							<RootRelation ID="60_op30_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[ProjectBufferOp]]></Name>
+								<Summary><![CDATA[Buffer result rows if required]]></Summary>
+								<Location><![CDATA[f06e234a-b866-49ab-9620-360d3aead86a:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1758173111070279,"end":1758173111077883}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.013</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 13":"numUsedLocalContexts 1, CPUTime 0.013 ms, CPUWaitTime 0.000 ms, calls 1","pipeline 14":"numUsedLocalContexts 0, CPUTime 0.000 ms, CPUWaitTime 0.000 ms, calls 0","Init CPUTime":"0.001 ms","Init CPUWaitTime":"0.000 ms","InitLocal CPUTime":"0.001 ms","InitLocal CPUWaitTime":"0.000 ms","Memory Allocated":"0.000 MiB","operatorId":"52"}]]></Details>
+								<Child ID="61_op29_node">
+									<ExecutedOutputCardinality>4</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+					</InnerPlans>
+				</RootRelation>
+			</Plan>
+			<Plan ID="62_group20" Type="Executed" PlanType="Column">
+				<RootRelation ID="62_group20_node" Status="Finished" Physical="True" TypeName="HEX">
+					<Name><![CDATA[LIMIT]]></Name>
+					<Summary><![CDATA[NUM RECORDS: 1000]]></Summary>
+					<ExecutionTime>
+						<Timestamps>[{"Pop":[{"start":1758173111070266,"end":1758173111077887}]}]</Timestamps>
+					</ExecutionTime>
+					<UserCPUTime Unit="ms">1.991</UserCPUTime>
+					<Details><![CDATA[{"max numUsedLocalContexts":"1","Non-compiled CPU overhead":"1.971 ms","Estimated Output Cardinality":"4","Output Spec":"[DocId, ValueId, Value] CUSTOMER_ID INT, [DocId, ValueId, Value] CUSTOMER_NAME NVARCHAR(40), [DocId, ValueId, Value] CUSTOMER_COUNTRY NVARCHAR(3), [DocId, ValueId, Value] CUSTOMER_REGION NVARCHAR(4), [DocId, ValueId, Value] SALES_ID INT, [DocId, ValueId, Value] PID NVARCHAR(5), [DocId, ValueId, Value] SALES_DATE DATE, [Value] SALES_AMOUNT INT"}]]></Details>
+					<InnerPlans>
+						<Plan ID="63_op31" Type="Executed" PlanType="Column">
+							<RootRelation ID="63_op31_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[ReparFinisher]]></Name>
+								<Summary><![CDATA[Flush the remaining data in the buffers of ReparGatherer]]></Summary>
+								<Location><![CDATA[f06e234a-b866-49ab-9620-360d3aead86a:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1758173111078988,"end":1758173111078995}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.004</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 14":"numUsedLocalContexts 1, CPUTime 0.004 ms, CPUWaitTime 0.000 ms, calls 1","operatorId":"49"}]]></Details>
+							</RootRelation>
+						</Plan>
+						<Plan ID="64_op26" Type="Executed" PlanType="Column">
+							<RootRelation ID="64_op26_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[LimitOffsetOp]]></Name>
+								<Summary><![CDATA[Limit rows, start at offset]]></Summary>
+								<Location><![CDATA[f06e234a-b866-49ab-9620-360d3aead86a:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1758173111070266,"end":1758173111078963}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.007</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 13":"numUsedLocalContexts 1, CPUTime 0.007 ms, CPUWaitTime 0.000 ms, calls 1","Init CPUTime":"0.002 ms","Init CPUWaitTime":"0.000 ms","Finish CPUTime":"0.001 ms","Finish CPUWaitTime":"0.000 ms","Limit: ":"1000","LimitOffset total incoming rows: ":"4","Offset: ":"0","operatorId":"46"}]]></Details>
+								<Child ID="65_op25_node">
+									<ExecutedOutputCardinality>4</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="66_op27" Type="Executed" PlanType="Column">
+							<RootRelation ID="66_op27_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[ReparGatherer]]></Name>
+								<Summary><![CDATA[Gathers data in a buffer and might schedule tasks when the buffer gets full]]></Summary>
+								<Location><![CDATA[f06e234a-b866-49ab-9620-360d3aead86a:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1758173111070270,"end":1758173111077891},{"start":1758173111078991,"end":1758173111078994}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.009</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"2","pipeline 13":"numUsedLocalContexts 1, CPUTime 0.006 ms, CPUWaitTime 0.000 ms, calls 1","pipeline 14":"numUsedLocalContexts 1, CPUTime 0.003 ms, CPUWaitTime 0.000 ms, calls 1","Init CPUTime":"0.001 ms","Init CPUWaitTime":"0.000 ms","InitLocal CPUTime":"0.001 ms","InitLocal CPUWaitTime":"0.000 ms","CompileTimeOutputEstimation":"1000","Estimated num rows buffered in parallel":"0","Framework Internal Data Size (B)":"0","Largest TaskSize used":"1","Memory Allocated":"0.000 MiB","NumFunctors":"0","NumPartitions":"1","Sequential Processing":"1","operatorId":"47"}]]></Details>
+								<Child ID="64_op26_node">
+									<ExecutedOutputCardinality>4</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+								<Child ID="63_op31_node">
+									<ExecutedOutputCardinality>1</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="67_op28" Type="Executed" PlanType="Column">
+							<RootRelation ID="67_op28_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[ReparProducer]]></Name>
+								<Summary><![CDATA[Produces output after a reparallelization point]]></Summary>
+								<Location><![CDATA[f06e234a-b866-49ab-9620-360d3aead86a:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1758173111075907,"end":1758173111077888}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.003</UserCPUTime>
+								<EstimatedOutputCardinality>4</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 13":"numUsedLocalContexts 1, CPUTime 0.003 ms, CPUWaitTime 0.000 ms, calls 1","pipeline 14":"numUsedLocalContexts 0, CPUTime 0.000 ms, CPUWaitTime 0.000 ms, calls 0","Estimated Output Cardinality":"4","TaskStats from op: 59":"count = 0, parentOpId: 4294967295","operatorId":"48"}]]></Details>
+								<Child ID="66_op27_node">
+									<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="61_op29" Type="Executed" PlanType="Column">
+							<RootRelation ID="61_op29_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[LlangInOutOperator]]></Name>
+								<Summary><![CDATA[<Materialize: customer.CUSTOMER_NAME (NVARCHAR(40) NOT NULL), customer.CUSTOMER_COUNTRY (NVARCHAR(3) NOT NULL), customer.CUSTOMER_REGION (NVARCHAR(4) NOT NULL), sales_cus.SALES_ID (INT NOT NULL), sales_cus.PID (NVARCHAR(5) NOT NULL), sales_cus.SALES_DATE (DATE NOT NULL)>]]></Summary>
+								<Location><![CDATA[f06e234a-b866-49ab-9620-360d3aead86a:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1758173111070277,"end":1758173111077887}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">1.968</UserCPUTime>
+								<EstimatedOutputCardinality>4</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","Non-compiled CPU overhead":"1.971 ms","calls":"1","JIT wait time":"0.001 ms","pipeline 13":"numUsedLocalContexts 1, CPUTime 1.968 ms, CPUWaitTime 0.000 ms, calls 1","pipeline 14":"numUsedLocalContexts 0, CPUTime 0.000 ms, CPUWaitTime 0.000 ms, calls 0","InitLocal CPUTime":"0.001 ms","InitLocal CPUWaitTime":"0.000 ms","Estimated Output Cardinality":"4","JIT cache hit":"no","JIT compile status":"Interpreting (finished 1 of 2 interpreted executions) (Policy: LowCardinality)","operatorId":"51"}]]></Details>
+								<Child ID="67_op28_node">
+									<ExecutedOutputCardinality>4</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+					</InnerPlans>
+				</RootRelation>
+			</Plan>
+			<Plan ID="68_group21" Type="Executed" PlanType="Column">
+				<RootRelation ID="68_group21_node" Status="Finished" Physical="True" TypeName="HEX">
+					<Name><![CDATA[AGGREGATION]]></Name>
+					<Summary><![CDATA[GROUPING: customer.CUSTOMER_ID, customer.CUSTOMER_NAME, customer.CUSTOMER_COUNTRY, customer.CUSTOMER_REGION, sales_cus.SALES_ID, sales_cus.PID, sales_cus.SALES_DATE, AGGREGATION: SUM(sales_cus.SALES_AMOUNT)]]></Summary>
+					<ExecutionTime>
+						<Timestamps>[{"Pop":[{"start":1758173111069935,"end":1758173111077899}]}]</Timestamps>
+					</ExecutionTime>
+					<UserCPUTime Unit="ms">5.594</UserCPUTime>
+					<Details><![CDATA[{"max numUsedLocalContexts":"1","Non-compiled CPU overhead":"7.528 ms","Estimated Output Cardinality":"4","HashColumn(0)":"customer.CUSTOMER_ID (VALUEID NOT NULL), no output","HashColumn(1)":"customer.CUSTOMER_NAME (VALUEID NOT NULL)","HashColumn(2)":"customer.CUSTOMER_COUNTRY (VALUEID NOT NULL)","HashColumn(3)":"customer.CUSTOMER_REGION (VALUEID NOT NULL)","HashColumn(4)":"sales_cus.SALES_ID (VALUEID NOT NULL)","HashColumn(5)":"sales_cus.PID (VALUEID NOT NULL)","HashColumn(6)":"sales_cus.SALES_DATE (VALUEID NOT NULL)","Memory Allocated":"0.002 MiB","Output Spec":"[DocId, ValueId, Value] CUSTOMER_ID INT, [DocId, ValueId] CUSTOMER_NAME NVARCHAR(40), [DocId, ValueId] CUSTOMER_COUNTRY NVARCHAR(3), [DocId, ValueId] CUSTOMER_REGION NVARCHAR(4), [DocId, ValueId] SALES_ID INT, [DocId, ValueId] PID NVARCHAR(5), [DocId, ValueId] SALES_DATE DATE, [Value] SALES_AMOUNT INT","ProjColumn(7)":"customer.CUSTOMER_ID (INT NOT NULL)","agg(0)":"Sum(sales_cus.SALES_AMOUNT (INT NOT NULL)) -> 1000004.10000000 (INT NOT NULL)","rowWidth":"40"}]]></Details>
+					<InnerPlans>
+						<Plan ID="65_op25" Type="Executed" PlanType="Column">
+							<RootRelation ID="65_op25_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[LlangOutOperator]]></Name>
+								<Summary><![CDATA[<Merge part result, calculate post aggregations and materialize rows>]]></Summary>
+								<Location><![CDATA[f06e234a-b866-49ab-9620-360d3aead86a:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1758173111070263,"end":1758173111077896}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">5.543</UserCPUTime>
+								<EstimatedOutputCardinality>4</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","Non-compiled CPU overhead":"7.528 ms","calls":"1","pipeline 13":"numUsedLocalContexts 1, CPUTime 5.543 ms, CPUWaitTime 0.000 ms, calls 1","InitLocal CPUTime":"0.002 ms","InitLocal CPUWaitTime":"0.000 ms","Estimated Output Cardinality":"4","JIT cache hit":"no","JIT compile status":"Interpreting (finished 1 of 2 interpreted executions) (Policy: LowCardinality)","Memory Allocated":"0.001 MiB","NumResizedCoalMaps":"0","TaskStats from op: 57":"count = 0, parentOpId: 4294967295","operatorId":"45"}]]></Details>
+								<Child ID="69_op23_node">
+									<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="70_op16" Type="Executed" PlanType="Column">
+							<RootRelation ID="70_op16_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[PartVidGroupingOffsetsInitOp]]></Name>
+								<Summary><![CDATA[InitOp for PartValueId grouping offsets]]></Summary>
+								<Location><![CDATA[f06e234a-b866-49ab-9620-360d3aead86a:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1758173111069946,"end":1758173111069975}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.004</UserCPUTime>
+								<EstimatedOutputCardinality>4</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 12":"numUsedLocalContexts 1, CPUTime 0.004 ms, CPUWaitTime 0.000 ms, calls 1","Estimated Output Cardinality":"4","operatorId":"36"}]]></Details>
+								<Child ID="71_op15_node">
+									<ExecutedOutputCardinality>5</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="72_op21" Type="Executed" PlanType="Column">
+							<RootRelation ID="72_op21_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[LlangOperatorWithRetry<LlangInOperator>]]></Name>
+								<Summary><![CDATA[<Materialize: sales_cus.CUSTOMER_ID (INT NOT NULL)>; <Lookup rows in VectorJoinMap>; <Materialize>; <Materialize: customer.CUSTOMER_NAME (VALUEID NOT NULL), customer.CUSTOMER_COUNTRY (VALUEID NOT NULL), customer.CUSTOMER_REGION (VALUEID NOT NULL), sales_cus.SALES_ID (VALUEID NOT NULL), sales_cus.PID (VALUEID NOT NULL), sales_cus.SALES_DATE (VALUEID NOT NULL), sales_cus.SALES_AMOUNT (INT NOT NULL)>; <Collect rows in a CoalMap and compute aggregates>]]></Summary>
+								<Location><![CDATA[f06e234a-b866-49ab-9620-360d3aead86a:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1758173111069935,"end":1758173111069975}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.027</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","JIT wait time":"0.006 ms","pipeline 12":"numUsedLocalContexts 1, CPUTime 0.027 ms, CPUWaitTime 0.000 ms, calls 1","InitLocal CPUTime":"0.002 ms","InitLocal CPUWaitTime":"0.000 ms","FieldToHeader":"1000002","HashColumn(0)":"customer.CUSTOMER_ID (VALUEID NOT NULL), no output","HashColumn(1)":"customer.CUSTOMER_NAME (VALUEID NOT NULL)","HashColumn(2)":"customer.CUSTOMER_COUNTRY (VALUEID NOT NULL)","HashColumn(3)":"customer.CUSTOMER_REGION (VALUEID NOT NULL)","HashColumn(4)":"sales_cus.SALES_ID (VALUEID NOT NULL)","HashColumn(5)":"sales_cus.PID (VALUEID NOT NULL)","HashColumn(6)":"sales_cus.SALES_DATE (VALUEID NOT NULL)","JIT cache hit":"no","JIT compile status":"Compiled (Policy: MediumCardinality)","JIT opt level":"O2","Memory Allocated":"0.001 MiB","ProjColumn(7)":"customer.CUSTOMER_ID (INT NOT NULL)","agg(0)":"Sum(sales_cus.SALES_AMOUNT (INT NOT NULL)) -> 1000004.10000000 (INT NOT NULL)","hashtable lookup key":"sales_cus.CUSTOMER_ID (INT NOT NULL)","join predicate":"customer.CUSTOMER_ID (INT NOT NULL) = sales_cus.CUSTOMER_ID (INT NOT NULL)","operatorId":"39","rowWidth":"40","vector join map size":"4"}]]></Details>
+								<Child ID="73_op9_node">
+									<Details><![CDATA[{"ConnectionType":"Logical"}]]></Details>
+								</Child>
+								<Child ID="74_op20_node">
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="75_op24" Type="Executed" PlanType="Column">
+							<RootRelation ID="75_op24_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[EnforceCompilationByThresholdOpT<>]]></Name>
+								<Summary><![CDATA[]]></Summary>
+								<Location><![CDATA[f06e234a-b866-49ab-9620-360d3aead86a:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1758173111070357,"end":1758173111070360}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.003</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 13":"numUsedLocalContexts 1, CPUTime 0.003 ms, CPUWaitTime 0.000 ms, calls 1","TaskStats from op: 58":"count = 0, parentOpId: 4294967295","operatorId":"41"}]]></Details>
+								<Child ID="69_op23_node">
+									<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="69_op23" Type="Executed" PlanType="Column">
+							<RootRelation ID="69_op23_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[MergeCoalMapsSchedulingOp<GroupByPayloadHandler>]]></Name>
+								<Summary><![CDATA[Schedule tasks to merge CoalMapArrays into final result]]></Summary>
+								<Location><![CDATA[f06e234a-b866-49ab-9620-360d3aead86a:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1758173111070345,"end":1758173111077899}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.017</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 13":"numUsedLocalContexts 1, CPUTime 0.017 ms, CPUWaitTime 0.000 ms, calls 1","InputNumLocalStates":"1","NumMaps":"1","NumScheduledStates":"2","context0 avgFillRate":"40","context0 avgNumBits":"3","context0 estimatedDistinctCount":"0","context0 maxNumBits":"3","context0 numBits":"3","context0 numCoalMaps":"1","context0 numInserts":"4","context0 numParts":"2","context0 size":"4","operatorId":"40"}]]></Details>
+								<Child ID="72_op21_node">
+									<Details><![CDATA[{"ConnectionType":"Logical"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+					</InnerPlans>
+				</RootRelation>
+			</Plan>
+			<Plan ID="76_group22" Type="Executed" PlanType="Column">
+				<RootRelation ID="76_group22_node" Status="Finished" Physical="True" TypeName="HEX">
+					<Name><![CDATA[HASH JOIN]]></Name>
+					<Summary><![CDATA[HASH CONDITION: customer.CUSTOMER_ID = sales_cus.CUSTOMER_ID, HASH SIZE: 4]]></Summary>
+					<ExecutionTime>
+						<Timestamps>[{"Pop":[{"start":1758173111069759,"end":1758173111069837}]}]</Timestamps>
+					</ExecutionTime>
+					<UserCPUTime Unit="ms">0.018</UserCPUTime>
+					<Details><![CDATA[{"max numUsedLocalContexts":"1","Est. Intermediate Cardinality":"4","Est. Left Side Input Cardinality":"4","Est. Output Cardinality":"4","Est. Right Side Input Cardinality":"5","Estimated Output Cardinality":"4","Memory Allocated":"0.000 MiB","Output Spec":"[DocId, ValueId, Value] CUSTOMER_ID INT, [DocId, ValueId] CUSTOMER_NAME NVARCHAR(40), [DocId, ValueId] CUSTOMER_COUNTRY NVARCHAR(3), [DocId, ValueId] CUSTOMER_REGION NVARCHAR(4), [DocId, ValueId] SALES_ID INT, [DocId, ValueId] PID NVARCHAR(5), [DocId, ValueId] SALES_DATE DATE, [DocId, Value] SALES_AMOUNT INT","hashtable collect key":"customer.CUSTOMER_ID (INT NOT NULL)","hashtable lookup key":"sales_cus.CUSTOMER_ID (INT NOT NULL)","join predicate":"customer.CUSTOMER_ID (INT NOT NULL) = sales_cus.CUSTOMER_ID (INT NOT NULL)","vector join map size":"4"}]]></Details>
+					<InnerPlans>
+						<Plan ID="77_op18" Type="Executed" PlanType="Column">
+							<RootRelation ID="77_op18_node" Status="NotStarted" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[LlangOperatorWithRetry<LlangInOperator>]]></Name>
+								<Summary><![CDATA[Code-generated operator across relations <see next op>]]></Summary>
+								<Location><![CDATA[f06e234a-b866-49ab-9620-360d3aead86a:30040]]></Location>
+								<UserCPUTime Unit="ms">0.000</UserCPUTime>
+								<EstimatedOutputCardinality>4</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"0","calls":"0","Estimated Output Cardinality":"4","FieldToHeader":"1000002","HashColumn(0)":"customer.CUSTOMER_ID (VALUEID NOT NULL), no output","HashColumn(1)":"customer.CUSTOMER_NAME (VALUEID NOT NULL)","HashColumn(2)":"customer.CUSTOMER_COUNTRY (VALUEID NOT NULL)","HashColumn(3)":"customer.CUSTOMER_REGION (VALUEID NOT NULL)","HashColumn(4)":"sales_cus.SALES_ID (VALUEID NOT NULL)","HashColumn(5)":"sales_cus.PID (VALUEID NOT NULL)","HashColumn(6)":"sales_cus.SALES_DATE (VALUEID NOT NULL)","ProjColumn(7)":"customer.CUSTOMER_ID (INT NOT NULL)","agg(0)":"Sum(sales_cus.SALES_AMOUNT (INT NOT NULL)) -> 1000004.10000000 (INT NOT NULL)","hashtable lookup key":"sales_cus.CUSTOMER_ID (INT NOT NULL)","join predicate":"customer.CUSTOMER_ID (INT NOT NULL) = sales_cus.CUSTOMER_ID (INT NOT NULL)","rowWidth":"40","vector join map size":"4"}]]></Details>
+								<Child ID="78_op17_node">
+									<Details><![CDATA[{"ConnectionType":"Logical"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="79_op19" Type="Executed" PlanType="Column">
+							<RootRelation ID="79_op19_node" Status="NotStarted" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[LlangOperatorWithRetry<LlangInOperator>]]></Name>
+								<Summary><![CDATA[Code-generated operator across relations <see next op>]]></Summary>
+								<Location><![CDATA[f06e234a-b866-49ab-9620-360d3aead86a:30040]]></Location>
+								<UserCPUTime Unit="ms">0.000</UserCPUTime>
+								<EstimatedOutputCardinality>4</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"0","calls":"0","Estimated Output Cardinality":"4","FieldToHeader":"1000002","HashColumn(0)":"customer.CUSTOMER_ID (VALUEID NOT NULL), no output","HashColumn(1)":"customer.CUSTOMER_NAME (VALUEID NOT NULL)","HashColumn(2)":"customer.CUSTOMER_COUNTRY (VALUEID NOT NULL)","HashColumn(3)":"customer.CUSTOMER_REGION (VALUEID NOT NULL)","HashColumn(4)":"sales_cus.SALES_ID (VALUEID NOT NULL)","HashColumn(5)":"sales_cus.PID (VALUEID NOT NULL)","HashColumn(6)":"sales_cus.SALES_DATE (VALUEID NOT NULL)","ProjColumn(7)":"customer.CUSTOMER_ID (INT NOT NULL)","agg(0)":"Sum(sales_cus.SALES_AMOUNT (INT NOT NULL)) -> 1000004.10000000 (INT NOT NULL)","hashtable lookup key":"sales_cus.CUSTOMER_ID (INT NOT NULL)","join predicate":"customer.CUSTOMER_ID (INT NOT NULL) = sales_cus.CUSTOMER_ID (INT NOT NULL)","rowWidth":"40","vector join map size":"4"}]]></Details>
+								<Child ID="77_op18_node">
+									<Details><![CDATA[{"ConnectionType":"Logical"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="74_op20" Type="Executed" PlanType="Column">
+							<RootRelation ID="74_op20_node" Status="NotStarted" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[LlangOperatorWithRetry<LlangInOperator>]]></Name>
+								<Summary><![CDATA[Code-generated operator across relations <see next op>]]></Summary>
+								<Location><![CDATA[f06e234a-b866-49ab-9620-360d3aead86a:30040]]></Location>
+								<UserCPUTime Unit="ms">0.000</UserCPUTime>
+								<EstimatedOutputCardinality>4</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"0","calls":"0","Estimated Output Cardinality":"4","FieldToHeader":"1000002","HashColumn(0)":"customer.CUSTOMER_ID (VALUEID NOT NULL), no output","HashColumn(1)":"customer.CUSTOMER_NAME (VALUEID NOT NULL)","HashColumn(2)":"customer.CUSTOMER_COUNTRY (VALUEID NOT NULL)","HashColumn(3)":"customer.CUSTOMER_REGION (VALUEID NOT NULL)","HashColumn(4)":"sales_cus.SALES_ID (VALUEID NOT NULL)","HashColumn(5)":"sales_cus.PID (VALUEID NOT NULL)","HashColumn(6)":"sales_cus.SALES_DATE (VALUEID NOT NULL)","ProjColumn(7)":"customer.CUSTOMER_ID (INT NOT NULL)","agg(0)":"Sum(sales_cus.SALES_AMOUNT (INT NOT NULL)) -> 1000004.10000000 (INT NOT NULL)","hashtable lookup key":"sales_cus.CUSTOMER_ID (INT NOT NULL)","join predicate":"customer.CUSTOMER_ID (INT NOT NULL) = sales_cus.CUSTOMER_ID (INT NOT NULL)","rowWidth":"40","vector join map size":"4"}]]></Details>
+								<Child ID="79_op19_node">
+									<Details><![CDATA[{"ConnectionType":"Logical"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="80_op7" Type="Executed" PlanType="Column">
+							<RootRelation ID="80_op7_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[LlangInOperator]]></Name>
+								<Summary><![CDATA[<Collect rows in local Vector>]]></Summary>
+								<Location><![CDATA[f06e234a-b866-49ab-9620-360d3aead86a:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1758173111069759,"end":1758173111069809}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.014</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","JIT wait time":"0.004 ms","pipeline 5":"numUsedLocalContexts 1, CPUTime 0.014 ms, CPUWaitTime 0.000 ms, calls 1","InitLocal CPUTime":"0.002 ms","InitLocal CPUWaitTime":"0.000 ms","JIT cache hit":"no","JIT compile status":"Compiled (Policy: MediumCardinality)","JIT opt level":"O2","hashtable collect key":"customer.CUSTOMER_ID (INT NOT NULL)","operatorId":"17"}]]></Details>
+								<Child ID="81_op6_node">
+									<ExecutedOutputCardinality>4</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="73_op9" Type="Executed" PlanType="Column">
+							<RootRelation ID="73_op9_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[VectorJoinMergeOp]]></Name>
+								<Summary><![CDATA[Merge VectorJoin maps]]></Summary>
+								<Location><![CDATA[f06e234a-b866-49ab-9620-360d3aead86a:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1758173111069833,"end":1758173111069837}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.004</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 6":"numUsedLocalContexts 1, CPUTime 0.004 ms, CPUWaitTime 0.000 ms, calls 1","Memory Allocated":"0.000 MiB","TaskStats from op: 55":"count = 0, parentOpId: 4294967295","finalNumBitsSet":"4","numBits":"4","numMaps":"1","numMapsInitialized":"1","operatorId":"19"}]]></Details>
+								<Child ID="80_op7_node">
+									<Details><![CDATA[{"ConnectionType":"Logical"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+					</InnerPlans>
+				</RootRelation>
+			</Plan>
+			<Plan ID="82_group23" Type="Executed" PlanType="Column">
+				<RootRelation ID="82_group23_node" Status="Finished" Physical="True" TypeName="HEX">
+					<Name><![CDATA[TABLE SCAN]]></Name>
+					<Summary><![CDATA[]]></Summary>
+					<TableType><![CDATA[COLUMN TABLE]]></TableType>
+					<Schema><![CDATA[HANA_DEV_HDI_DB_1]]></Schema>
+					<ObjectName><![CDATA[customer]]></ObjectName>
+					<ExecutionTime>
+						<Timestamps>[{"Pop":[{"start":1758173111069597,"end":1758173111069810}]}]</Timestamps>
+					</ExecutionTime>
+					<UserCPUTime Unit="ms">0.151</UserCPUTime>
+					<Details><![CDATA[{"max numUsedLocalContexts":"1","Active Table Fragments":"customer~delta1","Estimated Output Cardinality":"4","Filter":"<empty>","Output Spec":"[DocId, ValueId, Value] CUSTOMER_ID INT, [DocId] CUSTOMER_NAME NVARCHAR(40), [DocId] CUSTOMER_COUNTRY NVARCHAR(3), [DocId] CUSTOMER_REGION NVARCHAR(4)"}]]></Details>
+					<InnerPlans>
+						<Plan ID="83_group10" Type="Executed" PlanType="Column">
+							<RootRelation ID="83_group10_node" Status="Finished" Physical="True" TypeName="HEX">
+								<Name><![CDATA[TableScanControl]]></Name>
+								<Summary><![CDATA[]]></Summary>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1758173111069597,"end":1758173111069687}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.007</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","LogicalGroupId":"0"}]]></Details>
+								<InnerPlans>
+									<Plan ID="84_op0" Type="Executed" PlanType="Column">
+										<RootRelation ID="84_op0_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+											<Name><![CDATA[OpenFragmentsControlOp]]></Name>
+											<Summary><![CDATA[]]></Summary>
+											<Location><![CDATA[f06e234a-b866-49ab-9620-360d3aead86a:30040]]></Location>
+											<ExecutionTime>
+												<Timestamps>[{"Pop":[{"start":1758173111069597,"end":1758173111069687}]}]</Timestamps>
+											</ExecutionTime>
+											<UserCPUTime Unit="ms">0.007</UserCPUTime>
+											<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 2":"numUsedLocalContexts 1, CPUTime 0.007 ms, CPUWaitTime 0.000 ms, calls 1","operatorId":"3"}]]></Details>
+										</RootRelation>
+									</Plan>
+								</InnerPlans>
+							</RootRelation>
+						</Plan>
+						<Plan ID="85_group9" Type="Executed" PlanType="Column">
+							<RootRelation ID="85_group9_node" Status="Finished" Physical="True" TypeName="HEX">
+								<Name><![CDATA[customer[~main, ~delta1, ~delta2]]]></Name>
+								<Summary><![CDATA[]]></Summary>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1758173111069694,"end":1758173111069780}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.040</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","Active Table Fragments":"customer~delta1","LogicalGroupId":"1"}]]></Details>
+								<InnerPlans>
+									<Plan ID="86_group12" Type="Executed" PlanType="Column">
+										<RootRelation ID="86_group12_node" Status="Finished" Physical="True" TypeName="HEX">
+											<Name><![CDATA[Visibility]]></Name>
+											<Summary><![CDATA[Lookup]]></Summary>
+											<ExecutionTime>
+												<Timestamps>[{"Pop":[{"start":1758173111069697,"end":1758173111069780}]}]</Timestamps>
+											</ExecutionTime>
+											<UserCPUTime Unit="ms">0.023</UserCPUTime>
+											<Details><![CDATA[{"max numUsedLocalContexts":"1","LogicalGroupId":"3"}]]></Details>
+											<InnerPlans>
+												<Plan ID="87_op3" Type="Executed" PlanType="Column">
+													<RootRelation ID="87_op3_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+														<Name><![CDATA[VisibilityLookupOp]]></Name>
+														<Summary><![CDATA[Lookup of all visible rows on HANA_DEV_HDI_DB_1.customer~main, ~delta1, ~delta2 of group 3]]></Summary>
+														<Location><![CDATA[f06e234a-b866-49ab-9620-360d3aead86a:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1758173111069697,"end":1758173111069715}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.018</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 3":"numUsedLocalContexts 1, CPUTime 0.018 ms, CPUWaitTime 0.000 ms, calls 1","StateAfterRun (~delta1)":"{PredicateEstimationState: {RowCountEstimation: {exactly 4 rows}, ChunkCapacityBound: 4, LargestIntermediateResult: 0, Order: First}}","StateBeforeFinish (~delta1)":"{VisibilityLookupResult: bitvec with size 5}","operatorId":"11"}]]></Details>
+													</RootRelation>
+												</Plan>
+												<Plan ID="88_op8" Type="Executed" PlanType="Column">
+													<RootRelation ID="88_op8_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+														<Name><![CDATA[VisibilityLookupResultChopOp]]></Name>
+														<Summary><![CDATA[Chop result of group 3 into ranges]]></Summary>
+														<Location><![CDATA[f06e234a-b866-49ab-9620-360d3aead86a:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1758173111069775,"end":1758173111069780}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.005</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 5":"numUsedLocalContexts 1, CPUTime 0.005 ms, CPUWaitTime 0.000 ms, calls 1","operatorId":"12"}]]></Details>
+													</RootRelation>
+												</Plan>
+											</InnerPlans>
+										</RootRelation>
+									</Plan>
+									<Plan ID="89_group11" Type="Executed" PlanType="Column">
+										<RootRelation ID="89_group11_node" Status="Finished" Physical="True" TypeName="HEX">
+											<Name><![CDATA[FragmentScan]]></Name>
+											<Summary><![CDATA[]]></Summary>
+											<ExecutionTime>
+												<Timestamps>[{"Pop":[{"start":1758173111069694,"end":1758173111069812}]}]</Timestamps>
+											</ExecutionTime>
+											<UserCPUTime Unit="ms">0.017</UserCPUTime>
+											<Details><![CDATA[{"max numUsedLocalContexts":"1","Active Table Fragments":"customer~delta1","LogicalGroupId":"2"}]]></Details>
+											<InnerPlans>
+												<Plan ID="90_op2" Type="Executed" PlanType="Column">
+													<RootRelation ID="90_op2_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+														<Name><![CDATA[FragmentScanInitOp]]></Name>
+														<Summary><![CDATA[Operator init pipeline for HANA_DEV_HDI_DB_1.customer~main, ~delta1, ~delta2 of group 2]]></Summary>
+														<Location><![CDATA[f06e234a-b866-49ab-9620-360d3aead86a:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1758173111069694,"end":1758173111069720}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.008</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 3":"numUsedLocalContexts 1, CPUTime 0.008 ms, CPUWaitTime 0.000 ms, calls 1","StateAfterRun (~delta1)":"{PredicateEstimationState: {RowCountEstimation: {exactly 4 rows}, ChunkCapacityBound: 4, LargestIntermediateResult: 0, Order: First}, Fragment Cardinality: 4 rows}","operatorId":"8"}]]></Details>
+														<Child ID="87_op3_node">
+															<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+															<Details><![CDATA[{"ConnectionType":"Reversed"}]]></Details>
+														</Child>
+													</RootRelation>
+												</Plan>
+												<Plan ID="91_op4" Type="Executed" PlanType="Column">
+													<RootRelation ID="91_op4_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+														<Name><![CDATA[FragmentScanIndexLookupOp]]></Name>
+														<Summary><![CDATA[Operate index lookup pipeline for HANA_DEV_HDI_DB_1.customer~main, ~delta1, ~delta2 of group 2]]></Summary>
+														<Location><![CDATA[f06e234a-b866-49ab-9620-360d3aead86a:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1758173111069730,"end":1758173111069736}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.004</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 4":"numUsedLocalContexts 1, CPUTime 0.004 ms, CPUWaitTime 0.000 ms, calls 1","StateAfterRun (~delta1)":"{IndexLookupResult: n/a}","operatorId":"9"}]]></Details>
+													</RootRelation>
+												</Plan>
+												<Plan ID="92_op5" Type="Executed" PlanType="Column">
+													<RootRelation ID="92_op5_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+														<Name><![CDATA[FragmentScanOp_RpRp]]></Name>
+														<Summary><![CDATA[Operate evaluation pipeline for HANA_DEV_HDI_DB_1.customer~main, ~delta1, ~delta2 of group 2]]></Summary>
+														<Location><![CDATA[f06e234a-b866-49ab-9620-360d3aead86a:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1758173111069772,"end":1758173111069812}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.005</UserCPUTime>
+														<EstimatedOutputCardinality>4</EstimatedOutputCardinality>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 5":"numUsedLocalContexts 1, CPUTime 0.005 ms, CPUWaitTime 0.000 ms, calls 1","Estimated Output Cardinality":"4","TaskStats from op: 54":"count = 0, parentOpId: 4294967295\u000aSampling: \u000aSampling interrupted or no sampling took place for opId: 7. SampleSize: 255 rangeSize: 4 maxSampleSize: 8192 earlyExit: 0 hasRunOutOfTime: 0 isCostGettingWorse: 0\u000acalculated cost: 0 for op: 7 taskSize: 18446744073709551615 will run in seq: 1 totalRowCount: 4\u000a","operatorId":"10"}]]></Details>
+														<Child ID="88_op8_node">
+															<ExecutedOutputCardinality>4</ExecutedOutputCardinality>
+															<Details><![CDATA[{"ConnectionType":"Reversed"}]]></Details>
+														</Child>
+													</RootRelation>
+												</Plan>
+											</InnerPlans>
+										</RootRelation>
+									</Plan>
+								</InnerPlans>
+							</RootRelation>
+						</Plan>
+						<Plan ID="81_op6" Type="Executed" PlanType="Column">
+							<RootRelation ID="81_op6_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[LlangInOutOperator]]></Name>
+								<Summary><![CDATA[<Materialize: customer.CUSTOMER_ID (INT NOT NULL), customer.CUSTOMER_ID (VALUEID NOT NULL)>]]></Summary>
+								<Location><![CDATA[f06e234a-b866-49ab-9620-360d3aead86a:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1758173111069751,"end":1758173111069810}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.021</UserCPUTime>
+								<EstimatedOutputCardinality>4</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","JIT wait time":"0.009 ms","pipeline 5":"numUsedLocalContexts 1, CPUTime 0.021 ms, CPUWaitTime 0.000 ms, calls 1","InitLocal CPUTime":"0.003 ms","InitLocal CPUWaitTime":"0.000 ms","Estimated Output Cardinality":"4","HeaderToField":"1000002","JIT cache hit":"no","JIT compile status":"Compiled (Policy: MediumCardinality)","JIT opt level":"O2","operatorId":"15"}]]></Details>
+								<Child ID="92_op5_node">
+									<ExecutedOutputCardinality>4</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="93_op1" Type="Executed" PlanType="Column">
+							<RootRelation ID="93_op1_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[OpenFragmentsOp<0u>]]></Name>
+								<Summary><![CDATA[Open Fragments HANA_DEV_HDI_DB_1.customer~main, ~delta1, ~delta2]]></Summary>
+								<Location><![CDATA[f06e234a-b866-49ab-9620-360d3aead86a:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1758173111069603,"end":1758173111069686}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.083</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 2":"numUsedLocalContexts 1, CPUTime 0.083 ms, CPUWaitTime 0.000 ms, calls 1","operatorId":"4"}]]></Details>
+								<Child ID="84_op0_node">
+									<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+					</InnerPlans>
+				</RootRelation>
+			</Plan>
+			<Plan ID="94_group24" Type="Executed" PlanType="Column">
+				<RootRelation ID="94_group24_node" Status="Finished" Physical="True" TypeName="HEX">
+					<Name><![CDATA[TABLE SCAN]]></Name>
+					<Summary><![CDATA[]]></Summary>
+					<TableType><![CDATA[COLUMN TABLE]]></TableType>
+					<Schema><![CDATA[HANA_DEV_HDI_DB_1]]></Schema>
+					<ObjectName><![CDATA[sales_cus]]></ObjectName>
+					<ExecutionTime>
+						<Timestamps>[{"Pop":[{"start":1758173111069863,"end":1758173111069889}]}]</Timestamps>
+					</ExecutionTime>
+					<UserCPUTime Unit="ms">0.045</UserCPUTime>
+					<Details><![CDATA[{"max numUsedLocalContexts":"1","Active Table Fragments":"sales_cus~main","Estimated Output Cardinality":"5","Filter":"<empty>","Output Spec":"[DocId] SALES_ID INT, [DocId] PID NVARCHAR(5), [DocId] SALES_DATE DATE, [DocId] SALES_AMOUNT INT, [DocId, Value] CUSTOMER_ID INT"}]]></Details>
+					<InnerPlans>
+						<Plan ID="95_group16" Type="Executed" PlanType="Column">
+							<RootRelation ID="95_group16_node" Status="Finished" Physical="True" TypeName="HEX">
+								<Name><![CDATA[TableScanControl]]></Name>
+								<Summary><![CDATA[]]></Summary>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1758173111069863,"end":1758173111069889}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.002</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","LogicalGroupId":"4"}]]></Details>
+								<InnerPlans>
+									<Plan ID="96_op10" Type="Executed" PlanType="Column">
+										<RootRelation ID="96_op10_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+											<Name><![CDATA[OpenFragmentsControlOp]]></Name>
+											<Summary><![CDATA[]]></Summary>
+											<Location><![CDATA[f06e234a-b866-49ab-9620-360d3aead86a:30040]]></Location>
+											<ExecutionTime>
+												<Timestamps>[{"Pop":[{"start":1758173111069863,"end":1758173111069889}]}]</Timestamps>
+											</ExecutionTime>
+											<UserCPUTime Unit="ms">0.002</UserCPUTime>
+											<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 9":"numUsedLocalContexts 1, CPUTime 0.002 ms, CPUWaitTime 0.000 ms, calls 1","operatorId":"22"}]]></Details>
+										</RootRelation>
+									</Plan>
+								</InnerPlans>
+							</RootRelation>
+						</Plan>
+						<Plan ID="97_group15" Type="Executed" PlanType="Column">
+							<RootRelation ID="97_group15_node" Status="Finished" Physical="True" TypeName="HEX">
+								<Name><![CDATA[sales_cus[~main, ~delta1, ~delta2]]]></Name>
+								<Summary><![CDATA[]]></Summary>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1758173111069893,"end":1758173111069946}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.019</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","Active Table Fragments":"sales_cus~main","LogicalGroupId":"5"}]]></Details>
+								<InnerPlans>
+									<Plan ID="98_group17" Type="Executed" PlanType="Column">
+										<RootRelation ID="98_group17_node" Status="Finished" Physical="True" TypeName="HEX">
+											<Name><![CDATA[FragmentScan]]></Name>
+											<Summary><![CDATA[]]></Summary>
+											<ExecutionTime>
+												<Timestamps>[{"Pop":[{"start":1758173111069893,"end":1758173111069976}]}]</Timestamps>
+											</ExecutionTime>
+											<UserCPUTime Unit="ms">0.010</UserCPUTime>
+											<Details><![CDATA[{"max numUsedLocalContexts":"1","Active Table Fragments":"sales_cus~main","LogicalGroupId":"6"}]]></Details>
+											<InnerPlans>
+												<Plan ID="71_op15" Type="Executed" PlanType="Column">
+													<RootRelation ID="71_op15_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+														<Name><![CDATA[FragmentScanOp_RpRp]]></Name>
+														<Summary><![CDATA[Operate evaluation pipeline for HANA_DEV_HDI_DB_1.sales_cus~main, ~delta1, ~delta2 of group 6]]></Summary>
+														<Location><![CDATA[f06e234a-b866-49ab-9620-360d3aead86a:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1758173111069942,"end":1758173111069976}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.002</UserCPUTime>
+														<EstimatedOutputCardinality>5</EstimatedOutputCardinality>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 12":"numUsedLocalContexts 1, CPUTime 0.002 ms, CPUWaitTime 0.000 ms, calls 1","Estimated Output Cardinality":"5","TaskStats from op: 56":"count = 0, parentOpId: 4294967295\u000aSampling: \u000aSampling interrupted or no sampling took place for opId: 26. SampleSize: 255 rangeSize: 5 maxSampleSize: 8192 earlyExit: 0 hasRunOutOfTime: 0 isCostGettingWorse: 0\u000acalculated cost: 0 for op: 26 taskSize: 18446744073709551615 will run in seq: 1 totalRowCount: 5\u000a","operatorId":"29"}]]></Details>
+														<Child ID="99_op22_node">
+															<ExecutedOutputCardinality>5</ExecutedOutputCardinality>
+															<Details><![CDATA[{"ConnectionType":"Reversed"}]]></Details>
+														</Child>
+													</RootRelation>
+												</Plan>
+												<Plan ID="100_op14" Type="Executed" PlanType="Column">
+													<RootRelation ID="100_op14_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+														<Name><![CDATA[FragmentScanIndexLookupOp]]></Name>
+														<Summary><![CDATA[Operate index lookup pipeline for HANA_DEV_HDI_DB_1.sales_cus~main, ~delta1, ~delta2 of group 6]]></Summary>
+														<Location><![CDATA[f06e234a-b866-49ab-9620-360d3aead86a:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1758173111069911,"end":1758173111069915}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.002</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 11":"numUsedLocalContexts 1, CPUTime 0.002 ms, CPUWaitTime 0.000 ms, calls 1","StateAfterRun (~main)":"{IndexLookupResult: n/a}","operatorId":"28"}]]></Details>
+													</RootRelation>
+												</Plan>
+												<Plan ID="101_op12" Type="Executed" PlanType="Column">
+													<RootRelation ID="101_op12_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+														<Name><![CDATA[FragmentScanInitOp]]></Name>
+														<Summary><![CDATA[Operator init pipeline for HANA_DEV_HDI_DB_1.sales_cus~main, ~delta1, ~delta2 of group 6]]></Summary>
+														<Location><![CDATA[f06e234a-b866-49ab-9620-360d3aead86a:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1758173111069893,"end":1758173111069905}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.006</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 10":"numUsedLocalContexts 1, CPUTime 0.006 ms, CPUWaitTime 0.000 ms, calls 1","StateAfterRun (~main)":"{PredicateEstimationState: {RowCountEstimation: {exactly 5 rows}, ChunkCapacityBound: 5, LargestIntermediateResult: 0, Order: First}, Fragment Cardinality: 5 rows}","operatorId":"27"}]]></Details>
+														<Child ID="102_op13_node">
+															<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+															<Details><![CDATA[{"ConnectionType":"Reversed"}]]></Details>
+														</Child>
+													</RootRelation>
+												</Plan>
+											</InnerPlans>
+										</RootRelation>
+									</Plan>
+									<Plan ID="103_group18" Type="Executed" PlanType="Column">
+										<RootRelation ID="103_group18_node" Status="Finished" Physical="True" TypeName="HEX">
+											<Name><![CDATA[Visibility]]></Name>
+											<Summary><![CDATA[Lookup]]></Summary>
+											<ExecutionTime>
+												<Timestamps>[{"Pop":[{"start":1758173111069895,"end":1758173111069946}]}]</Timestamps>
+											</ExecutionTime>
+											<UserCPUTime Unit="ms">0.009</UserCPUTime>
+											<Details><![CDATA[{"max numUsedLocalContexts":"1","LogicalGroupId":"7"}]]></Details>
+											<InnerPlans>
+												<Plan ID="99_op22" Type="Executed" PlanType="Column">
+													<RootRelation ID="99_op22_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+														<Name><![CDATA[VisibilityLookupResultChopOp]]></Name>
+														<Summary><![CDATA[Chop result of group 7 into ranges]]></Summary>
+														<Location><![CDATA[f06e234a-b866-49ab-9620-360d3aead86a:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1758173111069943,"end":1758173111069946}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.003</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 12":"numUsedLocalContexts 1, CPUTime 0.003 ms, CPUWaitTime 0.000 ms, calls 1","operatorId":"31"}]]></Details>
+													</RootRelation>
+												</Plan>
+												<Plan ID="102_op13" Type="Executed" PlanType="Column">
+													<RootRelation ID="102_op13_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+														<Name><![CDATA[VisibilityLookupOp]]></Name>
+														<Summary><![CDATA[Lookup of all visible rows on HANA_DEV_HDI_DB_1.sales_cus~main, ~delta1, ~delta2 of group 7]]></Summary>
+														<Location><![CDATA[f06e234a-b866-49ab-9620-360d3aead86a:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1758173111069895,"end":1758173111069901}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.006</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 10":"numUsedLocalContexts 1, CPUTime 0.006 ms, CPUWaitTime 0.000 ms, calls 1","StateAfterRun (~main)":"{PredicateEstimationState: {RowCountEstimation: {exactly 5 rows}, ChunkCapacityBound: 5, LargestIntermediateResult: 0, Order: First}}","StateBeforeFinish (~main)":"{VisibilityLookupResult: bitvec with size 6}","operatorId":"30"}]]></Details>
+													</RootRelation>
+												</Plan>
+											</InnerPlans>
+										</RootRelation>
+									</Plan>
+								</InnerPlans>
+							</RootRelation>
+						</Plan>
+						<Plan ID="78_op17" Type="Executed" PlanType="Column">
+							<RootRelation ID="78_op17_node" Status="NotStarted" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[LlangOperatorWithRetry<LlangInOperator>]]></Name>
+								<Summary><![CDATA[Code-generated operator across relations <see next op>]]></Summary>
+								<Location><![CDATA[f06e234a-b866-49ab-9620-360d3aead86a:30040]]></Location>
+								<UserCPUTime Unit="ms">0.000</UserCPUTime>
+								<EstimatedOutputCardinality>5</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"0","calls":"0","Estimated Output Cardinality":"5","FieldToHeader":"1000002","HashColumn(0)":"customer.CUSTOMER_ID (VALUEID NOT NULL), no output","HashColumn(1)":"customer.CUSTOMER_NAME (VALUEID NOT NULL)","HashColumn(2)":"customer.CUSTOMER_COUNTRY (VALUEID NOT NULL)","HashColumn(3)":"customer.CUSTOMER_REGION (VALUEID NOT NULL)","HashColumn(4)":"sales_cus.SALES_ID (VALUEID NOT NULL)","HashColumn(5)":"sales_cus.PID (VALUEID NOT NULL)","HashColumn(6)":"sales_cus.SALES_DATE (VALUEID NOT NULL)","ProjColumn(7)":"customer.CUSTOMER_ID (INT NOT NULL)","agg(0)":"Sum(sales_cus.SALES_AMOUNT (INT NOT NULL)) -> 1000004.10000000 (INT NOT NULL)","hashtable lookup key":"sales_cus.CUSTOMER_ID (INT NOT NULL)","join predicate":"customer.CUSTOMER_ID (INT NOT NULL) = sales_cus.CUSTOMER_ID (INT NOT NULL)","rowWidth":"40","vector join map size":"4"}]]></Details>
+								<Child ID="70_op16_node">
+									<ExecutedOutputCardinality>5</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="104_op11" Type="Executed" PlanType="Column">
+							<RootRelation ID="104_op11_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[OpenFragmentsOp<0u>]]></Name>
+								<Summary><![CDATA[Open Fragments HANA_DEV_HDI_DB_1.sales_cus~main, ~delta1, ~delta2]]></Summary>
+								<Location><![CDATA[f06e234a-b866-49ab-9620-360d3aead86a:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1758173111069865,"end":1758173111069889}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.024</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 9":"numUsedLocalContexts 1, CPUTime 0.024 ms, CPUWaitTime 0.000 ms, calls 1","operatorId":"23"}]]></Details>
+								<Child ID="96_op10_node">
+									<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+					</InnerPlans>
+				</RootRelation>
+			</Plan>
+		</InnerPlans>
+	</Relation>
+</Plan>

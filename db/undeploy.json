@@ -1,4 +1,4 @@
 
  [
-    "src/TABLES/SALES.hdbtable"
+    "src/table/sales_cus.hdbtable"
  ]
